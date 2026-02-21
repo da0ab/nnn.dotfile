@@ -1,0 +1,2 @@
+# nnn.dotfile
+my nnn
