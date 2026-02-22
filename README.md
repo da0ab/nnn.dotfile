@@ -40,7 +40,27 @@ sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/get
 sudo apt install atool unzip zip p7zip-full unrar tar gzip bzip2 xz-utils
 ``
 
+## Автомонтирование
+``
+sudo apt install udiskie
+``
 
+``
+export NNN_PLUG='m:udiskie-start;u:nmount'
+``
+chmod +x ~/.config/nnn/plugins/udiskie-start
+```
+#!/usr/bin/env sh
+
+# Проверяем, не запущен ли уже udiskie
+if ! pgrep -x "udiskie" > /dev/null; then
+    udiskie &
+    # Можно добавить уведомление
+    notify-send "udiskie" "Демон автомонтирования запущен"
+else
+    notify-send "udiskie" "Уже запущен"
+fi
+```
 
 # nuke
 ``
