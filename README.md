@@ -19,7 +19,7 @@ sudo apt install build-essential pkg-config libncursesw5-dev libreadline-dev
 ``
 
 ## Клонировать и собрать
-``
+```
 git clone https://github.com/jarun/nnn.git
 
 cd nnn
@@ -27,7 +27,7 @@ cd nnn
 make  O_NERD=1
 
 sudo make install
-``
+```
 
 ## Создать структуру папок
 ``
