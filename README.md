@@ -98,8 +98,7 @@ export EDITOR
 
 # bashrc
 ``
-         
-# nnn cd on quit
+   # nnn cd on quit
 
 n() {
     export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
