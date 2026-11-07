@@ -21,8 +21,11 @@ sudo apt install build-essential pkg-config libncursesw5-dev libreadline-dev
 ## Клонировать и собрать
 ``
 git clone https://github.com/jarun/nnn.git
+
 cd nnn
+
 make  O_NERD=1
+
 sudo make install
 ``
 
@@ -95,32 +98,40 @@ export EDITOR
 
 # bashrc
 ``
-# NNN cd on quit
+         
+# nnn cd on quit
 
 n() {
     export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-
-    # Запускаем nnn с загрузкой сессии default
-    nnn -x -s default "$@"
-
-    # Если есть файл с последней директорией - переходим в неё
+    # Убедимся, что директория существует (на случай, если её нет)
+    mkdir -p "$(dirname "$NNN_TMPFILE")"
+    
+    command nnn "$@"
+    
     if [ -f "$NNN_TMPFILE" ]; then
         source "$NNN_TMPFILE"
         rm -f "$NNN_TMPFILE"
     fi
 }
-export NNN_OPTS=""
-unset NNN_OPTS
+
+
+# Colors (8-color palette)
 export NNN_COLORS="12345678"
 
-export NNN_PLUG='f:finder;o:fzopen;p:preview-tui;d:diffs;t:nmount;v:imgview'
+# File colors (LS_COLORS-подобная раскраска)
+BLK="0B" CHR="0B" DIR="04" EXE="06" REG="00" HARDLINK="06" SYMLINK="06" MISSING="00" ORPHAN="09" FIFO="06" SOCK="0B" OTHER="06"
+export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER"
+
+# Plugins (объединённый список)
+export NNN_PLUG='f:finder;o:fzopen;p:preview-tui;d:diffs;v:imgview;u:!udiskie-umount -a;m:udiskie-start'
+
+# GUI / opener
 export GUI=1
 export DISPLAY=:0
-export NNN_OPENER=$HOME/.config/nnn/plugins/nuke
+export NNN_OPENER=$HOME/.config/nnn/plugins/nuke   # если файла нет — закомментируйте
 
-# FIFO для передачи информации о hover-файле в превьювер
+# Preview (FIFO + split)
 export NNN_FIFO=/tmp/nnn.fifo
-# Настройки preview-tui
-export NNN_SPLIT=v 
-export NNN_SPLITSIZE=80          
+export NNN_SPLIT=v
+export NNN_SPLITSIZE=80
 ``
