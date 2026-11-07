@@ -15,7 +15,9 @@ my nnn
 ```
 Space  -  выделить
 
-y - копировать
+переместиться в нужную папку и на  выбор
+
+v -  переместить 
 
 p  -  вставить
 ```
@@ -42,14 +44,14 @@ mkdir -p ~/.config/nnn/plugins
 ``
 
 ## Плагины
+``
 sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)"
+``
 
 ## arhive
-
 ``
 sudo apt install atool unzip zip p7zip-full unrar tar gzip bzip2 xz-utils
 ``
-
 ## Автомонтирование
 ``
 sudo apt install udiskie
