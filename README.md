@@ -66,11 +66,9 @@ fi
 ```
 
 ## nuke
-``
+```
 EDITOR=nvim
 export EDITOR
-``
-``
     ### HTML - открываем в Firefox ###
     htm|html|xhtml)
         if [ "$GUI" = "1" ] && [ -n "$DISPLAY" ]; then
@@ -94,8 +92,10 @@ export EDITOR
             fi
         fi
         ;; 
-``
+```
+
 ## bashrc 
+
 ```
 
    # nnn cd on quit
