@@ -95,9 +95,9 @@ export EDITOR
         fi
         ;; 
 ``
+## bashrc 
+```
 
-## bashrc
-``
    # nnn cd on quit
 
 n() {
@@ -112,8 +112,6 @@ n() {
         rm -f "$NNN_TMPFILE"
     fi
 }
-
-
    # Colors (8-color palette)
 export NNN_COLORS="12345678"
 
